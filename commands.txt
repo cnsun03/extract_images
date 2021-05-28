@@ -1,9 +1,11 @@
 Prefix name:
 for f in * ; do mv -v -- "$f" "prefix_$f" ; done
 
-
 Copy multiple figures in sequence 
-for i in $(seq -f "%04d" 1 100); do cp -v ./count0"$i"_* ~ ; done  
+for i in $(seq -f "%04g" 1 100); do cp -v ./count"$i"_* ~ ; done  
+
+Example:
+for i in $(seq -f "%04g" 0 9529); do mv -v ~/.ros/count"$i"_front* ./front ; done  
 
 
 Removing prefix
