@@ -1,0 +1,14 @@
+Prefix name:
+for f in * ; do mv -v -- "$f" "prefix_$f" ; done
+
+
+Copy multiple figures in sequence 
+for i in $(seq -f "%04d" 1 100); do cp -v ./count0"$i"_* ~ ; done  
+
+
+Removing prefix
+rename 's/count[0-9][0-9][0-9][0-9]_//' *
+
+
+Convert png2jpg
+mogrify -verbose -format jpg *.png

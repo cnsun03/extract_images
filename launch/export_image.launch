@@ -1,0 +1,50 @@
+<launch>
+  <!-- <node name="extract0" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_front/color/image_raw_throttle"/>
+    <param name="image_name"          value="front_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node>
+
+  <node name="extract1" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_left/color/image_raw_throttle"/>
+    <param name="image_name"          value="left_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node>
+
+  <node name="extract2" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_right/color/image_raw_throttle"/>
+    <param name="image_name"          value="right_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node> -->
+
+  <node name="extract0" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_front/color/image"/>
+    <param name="image_name"          value="front_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node>
+
+  <node name="extract1" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_left/color/image"/>
+    <param name="image_name"          value="left_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node>
+
+  <node name="extract2" pkg="extract_images" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+    <remap from="image"               to="/spot2/camera_right/color/image"/>
+    <param name="image_name"          value="right_"/>
+    <param name="count_format"        value="count%04i_"/>
+    <param name="image_format"        value=".jpg"/>
+    <param name="sec_per_frame"       value="0.2"/>
+  </node>
+	
+</launch>
