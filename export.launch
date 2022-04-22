@@ -1,0 +1,23 @@
+<launch>
+  <!- - name of the left and right cameras respectively -->
+  <arg name="image_topic_1" default="/camera/infra1/image_rect_raw" />
+  <arg name="image_topic_2" default="/camera/infra2/image_rect_raw" />
+
+  <!-- edit the file location for the bag file -->
+  <node name="rosbag_play" pkg="rosbag" type="play" output="screen" args="$HOME/Documents/CameraData/image/test2.bag"/>
+  
+  <!-- edit the file save location if needed -->
+  
+  <!-- left -->
+  <node name="image_saver_1" pkg="extract_images" type="image_saver" output="screen">
+	<remap from="image" to="$(arg image_topic_1)"/>
+	<param name="filename_format" value="$HOME/Documents/CameraData/image/left_%f.jpg" />
+</node>
+
+  <!-- right -->
+  <node name="image_saver_2" pkg="extract_images" type="image_saver" output="screen">
+	<remap from="image" to="$(arg image_topic_2)"/>
+	<param name="filename_format" value="$HOME/Documents/CameraData/image/right_%f.jpg" />
+</node>
+
+</launch>
