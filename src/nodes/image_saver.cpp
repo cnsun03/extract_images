@@ -84,6 +84,7 @@ public:
   void callbackWithoutCameraInfo(const sensor_msgs::ImageConstPtr& image_msg)
   {
     if (is_first_image_) {
+      start_time_ = image_msg->header.stamp;
       is_first_image_ = false;
 
       // Wait a tiny bit to see whether callbackWithCameraInfo is called
@@ -153,14 +154,15 @@ private:
     }
 
     if (!image.empty()) {
+      ros::Duration duration = image_msg->header.stamp - start_time_;
       try {
         filename = (g_format).str();
       } catch (...) { g_format.clear(); }
       try {
-        filename = (g_format % count_).str();
+        filename = (g_format % duration.toSec()).str();
       } catch (...) { g_format.clear(); }
       try { 
-        filename = (g_format % count_ % "jpg").str();
+        filename = (g_format % duration.toSec() % "jpg").str();
       } catch (...) { g_format.clear(); }
 
       if ( save_all_image || save_image_service ) {
