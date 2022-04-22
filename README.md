@@ -3,6 +3,8 @@ extract_images
 
 This package was edited starting [image_view][1] and [image_transport][2] to extract images from multiples cameras in ROS bags.
 
+Edited for D455
+
 ## Build
 To build this package, clone it in your workspace, then just type the command below:
 ```
@@ -16,53 +18,12 @@ Before running the code, check if the launch file `export_image.launch` is confi
 ## Extract raw images
 To extract raw images, do the following steps in order:
 1. Open a terminal and run roscore;
-2. In other terminal, go to the directory which the bags are stored and run the following command (this command will make all the bag files in directory run in order):
+2. Edit the bag file location in export.launch, and edit anything else that needs to be edited
 
+3. Run the roslaunch:
 ```
-$ rosbag play *.bag
+$ roslaunch extract_images export.launch
 ```
-
-3. In order terminal run the roslaunch:
-```
-$ roslaunch extract_images export_image.launch
-```
-
-## Extract compressed images
-To extract compressed images it's necessary to perfom a taks more to be possible extract the images. So, to do this, follow the steps below:
-
-1. Open a terminal and run roscore;
-2. In other terminal, go to the directory which the bags are stored and run the following command (this command will make all the bag files in directory run in order):
-
-```
-$ rosbag play *.bag
-```
-3. In other terminal run the command (this sould be done for each topic):
-```
-$ rosrun image_transport republish compressed in:="/topic" raw out:="/new_topic"
-```
-
-For example:
-```
-$ rosrun image_transport republish compressed in:=/spot2/camera_front/color/image_raw_throttle/ raw out:=/spot2/camera_front/color/image
-```
-
-4. In other terminal run the roslaunch:
-```
-$ roslaunch extract_images export_image.launch
-```
-
-## Usefull commands
-To remove the "`count%04i_`" from the file names, install the library rename from Linux, by the command:
-```
-$ sudo apt install rename
-```
-
-Then, type the command:
-```
-$ rename 's/count[0-9][0-9][0-9][0-9]_//' *
-```
-
-Other useful commands are available in the file `commands.txt`.
 
 ## More information
 More information can be found in Wiki ROS.
